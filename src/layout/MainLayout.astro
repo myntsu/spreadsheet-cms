@@ -1,0 +1,13 @@
+---
+// layout imports
+import MainHead from '../layout/MainHead.astro';
+
+const { title, description } = Astro.props;
+---
+
+<html lang="en">
+    <MainHead {title} {description}/>
+	<body>
+        <slot/>
+    </body>
+</html>

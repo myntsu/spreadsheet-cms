@@ -1,26 +1,24 @@
 ---
 // layout imports
 import MainLayout from '../layout/MainLayout.astro';
+
+const res = await fetch("https://script.googleusercontent.com/macros/echo?user_content_key=mdxs14Crs9NoGqOH8yHzm3fXWairMJBikNRlekAri5GcJsJ8m_Ya8LqhKHQsYpow4nkJypr52j5wmG6NFykJN4ulAtsdurVpm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnLKQD0xlRdQNORBeubHhskJtf2UCBubGj2B2xfutiOdgkRnT3lsoHqFVKfrWto-uf_VFUtiN9nc_zwS1fN0fcKGlHOSTBWM63dz9Jw9Md8uu&lib=McmiJzxE192vUTCqyMMT_iInk_TX2PQ6s");
+
+const { data } = await res.json();
+
+console.log("data", data);
 ---
 
 <MainLayout title="Spreadsheet CMS" description="Live test of a Spreadsheet CMS with SSR and Vercel.">
-  <div id="app">Loading...</div>
-  <script>
-    fetch("https://script.googleusercontent.com/macros/echo?user_content_key=mdxs14Crs9NoGqOH8yHzm3fXWairMJBikNRlekAri5GcJsJ8m_Ya8LqhKHQsYpow4nkJypr52j5wmG6NFykJN4ulAtsdurVpm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnLKQD0xlRdQNORBeubHhskJtf2UCBubGj2B2xfutiOdgkRnT3lsoHqFVKfrWto-uf_VFUtiN9nc_zwS1fN0fcKGlHOSTBWM63dz9Jw9Md8uu&lib=McmiJzxE192vUTCqyMMT_iInk_TX2PQ6s")
-      .then(response => response.json())
-      .then(({ data }) => {
-        const app = document.getElementById('app');
-        app.innerHTML = data.map(i => `
-          <div>
-            <h2>${i.week}</h2>
-            ${i.days.map(d => `
-              <div>
-                <h3>${d.day}</h3>
-                <p>Earnings: ${d.earnings}</p>
-              </div>
-            `).join('')}
-          </div>
-        `).join('');
-      });
-  </script>
+  {data.map((weekData) => (
+    <div>
+      <h2>{weekData.week}</h2>
+      {weekData.days.map((dayData) => (
+        <div>
+          <h3>{dayData.day}</h3>
+          <p>Earnings: {dayData.earnings}</p>
+        </div>
+      ))}
+    </div>
+  ))}
 </MainLayout>

@@ -30,18 +30,12 @@ section {
   }
 
   .day-earnings {
-    display: flex;
-
     padding: 2rem;
     text-align: center;
-
     position: relative;
 
-    #day {
-      width: var(--filler);
-
+    .list-of-days {
       display: grid;
-      grid-template-rows: 2.75rem repeat(7, 1fr);
       place-items: center;
     }
 
@@ -121,6 +115,11 @@ section {
     &:is(:hover, :focus-visible) {
       opacity: .9;
     }
+
+    &:is(:active) {
+      translate: 2px 2px;
+      box-shadow: none;
+    }
   }
 
   .socials {
@@ -135,6 +134,10 @@ section {
     a {
       color: hsl(0 0% 91%);
       cursor: pointer;
+
+      &:is(:hover, :focus-visible) {
+        opacity: .9;
+      }
     }
   }
 }

@@ -1,26 +1,32 @@
 section {
   width: 100%;
-  overflow-x: auto;
-  scrollbar-gutter: stable;
+  overflow: hidden;
+  position: relative;
+
+  h1 {
+    text-align: center;
+    font-size: clamp(1rem, 0.4118rem + 2.3529vw, 2rem);
+  }
+
 }
 
 #day-of-week {
   --filler: 12ch;
-
-  display: flex;
-  justify-content: center;
+  display: grid;
+  justify-items: center;
   align-items: center;
-  flex-wrap: wrap;
 
-  max-width: 700px;
+  width: 100%;
   margin-inline: auto;
+  margin-block-end: 2rem;
+
+  position: relative;
+
+  overflow-x: auto;
+  scrollbar-gutter: stable;
 
   h2 {
     font-size: 1rem;
-  }
-
-  @media (max-width: 700px) {
-    width: 700px;
   }
 
   .day-earnings {
@@ -28,6 +34,8 @@ section {
 
     padding: 2rem;
     text-align: center;
+
+    position: relative;
 
     #day {
       width: var(--filler);
@@ -59,7 +67,7 @@ section {
             background-color: hsl(0 0% 16% / 0.5);
 
             h2 {
-              color: hsl(200 70% 70%);
+              color: hsl(0 70% 70%);
             }
           }
 
@@ -69,14 +77,64 @@ section {
           }
 
           .earnings-wrapper {
+            color: hsl(0 0% 91% / 0.7);
             &:is(:hover) {
-              color: hsl(80 100% 15%);
-              background-color: hsl(0 0% 100% / .6);
+              color: hsl(80 100% 70%);
+              background-color: hsl(240 70% 80% / 0.2);
               font-weight: 900;
             }
           }
         }
       }
+    }
+  }
+}
+
+.socials-and-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  width: 100%;
+  max-width: 600px;
+  margin-inline: auto;
+
+  .refresh {
+    border: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+
+    padding: .25rem 1rem;
+
+    color: hsl(0 0% 91%);
+    background-color: hsl(0 100% 60%);
+
+    border-radius: .25rem;
+    box-shadow: 2px 2px 0 hsl(0 0% 91%);
+    
+    cursor: pointer;
+
+    &:is(:hover, :focus-visible) {
+      opacity: .9;
+    }
+  }
+
+  .socials {
+    flex: 1 0 100%;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+
+    z-index: 1;
+    a {
+      color: hsl(0 0% 91%);
+      cursor: pointer;
     }
   }
 }

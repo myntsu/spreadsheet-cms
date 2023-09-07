@@ -1,24 +1,52 @@
 ---
 // layout imports
-import MainLayout from '../layout/MainLayout.astro';
+import MainLayout from "../layout/MainLayout.astro";
 
-const res = await fetch("https://script.googleusercontent.com/macros/echo?user_content_key=mdxs14Crs9NoGqOH8yHzm3fXWairMJBikNRlekAri5GcJsJ8m_Ya8LqhKHQsYpow4nkJypr52j5wmG6NFykJN4ulAtsdurVpm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnLKQD0xlRdQNORBeubHhskJtf2UCBubGj2B2xfutiOdgkRnT3lsoHqFVKfrWto-uf_VFUtiN9nc_zwS1fN0fcKGlHOSTBWM63dz9Jw9Md8uu&lib=McmiJzxE192vUTCqyMMT_iInk_TX2PQ6s");
+// css imports
+import "../styles/index.scss";
+
+const res = await fetch(
+  "https://script.googleusercontent.com/macros/echo?user_content_key=mdxs14Crs9NoGqOH8yHzm3fXWairMJBikNRlekAri5GcJsJ8m_Ya8LqhKHQsYpow4nkJypr52j5wmG6NFykJN4ulAtsdurVpm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnLKQD0xlRdQNORBeubHhskJtf2UCBubGj2B2xfutiOdgkRnT3lsoHqFVKfrWto-uf_VFUtiN9nc_zwS1fN0fcKGlHOSTBWM63dz9Jw9Md8uu&lib=McmiJzxE192vUTCqyMMT_iInk_TX2PQ6s"
+);
 
 const { data } = await res.json();
-
-console.log("data", data);
 ---
 
-<MainLayout title="Spreadsheet CMS" description="Live test of a Spreadsheet CMS with SSR and Vercel.">
-  {data.map((weekData) => (
-    <div>
-      <h2>{weekData.week}</h2>
-      {weekData.days.map((dayData) => (
-        <div>
-          <h3>{dayData.day}</h3>
-          <p>Earnings: {dayData.earnings}</p>
-        </div>
-      ))}
+<MainLayout
+  title="Spreadsheet CMS"
+  description="Live test of a Spreadsheet CMS with SSR and Vercel.">
+  <section>
+    <div id="day-of-week">
+		<div id="week">
+			<div class="filler"></div>
+			<div class="number-of-week">
+			  {data.map((weeksData) => <h2>{weeksData.week}</h2>)}
+			</div>
+		  </div>
+      <div id="day">
+        <p>Monday</p>
+        <p>Thuesday</p>
+        <p>Wednesday</p>
+        <p>Thursday</p>
+        <p>Friday</p>
+        <p>Saturday</p>
+        <p>Sunday</p>
+      </div>
+      <div id="earnings">
+        {
+          data.map((daysData) => (
+            <div>
+              {daysData.days.map((dayData) => (
+                <div class="earnings-wrapper">
+                  <p>{dayData.earnings}</p>
+                </div>
+              ))}
+            </div>
+          ))
+        }
+      </div>
     </div>
-  ))}
+  </section>
 </MainLayout>
+
+<!-- <h3>{dayData.day}</h3> -->

@@ -4,7 +4,7 @@ This project is a demo & test of using **Google Spreadsheets** as a tiny CMS, fe
 
 **JSON file:** [Google Spreadsheet API](https://script.googleusercontent.com/macros/echo?user_content_key=hoxKlP7BD88BZCs7Nws2CLJMDQXSY-dCK0hjtY0ot6jsBN1H5BoCT6Yrj9rVLLf3_tbRNqQN6IT4oWeC_eUKjhJExhDvcRWZm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnLKQD0xlRdQNORBeubHhskJtf2UCBubGj2B2xfutiOdgkRnT3lsoHqFVKfrWto-uf_VFUtiN9nc_zwS1fN0fcKGlHOSTBWM63dz9Jw9Md8uu&lib=McmiJzxE192vUTCqyMMT_iInk_TX2PQ6s)
 
-**Code of the function additionally turning it into a JSON:**
+**Code of the function additionally turning it into a JSON**
 
 ```js
 function doGet() {
